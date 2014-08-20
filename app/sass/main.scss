@@ -1,0 +1,702 @@
+@import "bower_components/bourbon/dist/bourbon";
+@import "bower_components/neat/app/assets/stylesheets/neat";
+
+@import "grid-settings";
+@import "variables";
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  color: $base-text-color;
+
+  .outer-container {
+    @include outer-container;
+  }
+
+  @include media($tablet-up) {
+    font-size: 10px;
+  }
+
+  @include media($small-screen) {
+    font-size: 12px;
+  }
+
+  @include media($medium-screen) {
+    font-size: 14px;
+  }
+
+  @include media($large-screen) {
+    font-size: 16px;
+  }
+
+  &, span, p, a, i, button, input {
+    font-weight: 100;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 200;
+    letter-spacing: 2px;
+  }
+}
+
+header {
+  @include transition(all 0.5s ease-in-out);
+  background-color: transparentize($white, 0.1);
+  box-shadow: 0 0 3px 1px transparentize($black, 0.7);
+  height: $header-height;
+  width: 100%;
+  padding: ($logo-size / 2) 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  top: - $header-height;
+
+  &.visible {
+    @include transition(all 0.5s ease-in-out);
+    top: 0;
+  }
+
+  &:hover {
+    background-color: $white;
+  }
+
+  .icon {
+    background: url('/images/SC_icon_small.png') no-repeat;
+    background-size: $logo-size;
+    padding-left: $logo-size + ($gutter / 2);
+    height: $logo-size;
+    display: block;
+    line-height: $logo-size;
+
+    span {
+      font-size: $logo-size / 3 * 2;
+      font-weight: 100;
+      color: $base-text-color;
+    }
+  }
+
+  a.signup {
+    border: 2px solid $pink;
+    margin-top: -2px;
+    padding: 1em 2em;
+    font-size: $header-height / 4;
+    line-height: 0em;
+    border-radius: 6px;
+    color: $pink;
+    font-weight: 400;
+    letter-spacing: 1px;
+
+    &:hover {
+      background-color: $pink;
+      color: $white;
+    }
+  }
+}
+
+.bg-gray {
+  background: url('/images/stardust_@2X.png') no-repeat center;
+  background-size: cover;
+  color: $white;
+  box-shadow: inset 0 -50px 50px -50px transparentize($black, 0.4),
+              inset 0  50px 50px -50px transparentize($black, 0.4);
+}
+
+.bg-white {
+  background-color: $white;
+  min-height: 100px;
+}
+
+section {
+  background-color: $light-gray;
+  overflow: hidden;
+}
+
+section#highlights, section#pricing {
+
+  ul {
+    li {
+      font-size: 1.5em;
+      margin: 0 0 $base-line-height 0;
+      letter-spacing: 2px;
+      position: relative;
+      line-height: 1.25em;
+
+      &:last-child {
+        margin: 0;
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        z-index: 10;
+      }
+    }
+  }
+}
+
+section#landing {
+  background: url('/images/bg.png') no-repeat top right;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  box-shadow: inset 0 -100px 200px -100px transparentize($black, 0.4);
+
+  .outer-container {
+    height: 100%;
+    vertical-align: middle;
+  }
+
+  #logo {
+    @include span-columns(6);
+    height: 100%;
+    position: relative;
+
+    &:before {
+      content: '';
+      vertical-align: middle;
+      display: inline-block;
+      height: 100%;
+      float: left;
+    }
+
+    .intro {
+      position: relative;
+      z-index: 5;
+
+      span {
+        display: inline-block;
+        line-height: 1.75em;
+        font-size: em(26);
+        font-weight: 200;
+        position: relative;
+        letter-spacing: 1px;
+        text-shadow: 1px  1px 0 $white,
+                    -1px -1px 0 $white,
+                    -1px  1px 0 $white,
+                     1px -1px 0 $white;
+      }
+
+      &:before {
+        content: '';
+        background: url('/images/logo_SalonCast.png') no-repeat;
+        width: 100%;
+        min-height: em(160);
+        background-size: contain;
+        display: block;
+        margin: ($header-height / 2 * 3) 0 $header-height / 2 0;
+      }
+
+      @include media($medium-screen) {
+        span {
+          font-size: em(24);
+        }
+        &:before {
+          min-height: em(140);
+          margin: ($header-height / 3 * 4) 0 $header-height / 3 0;
+        }
+      }
+
+      @include media($tablet-up) {
+        &:before {
+          margin: ($header-height / 2) 0 $header-height / 2 0;
+        }
+      }
+
+    }
+  }
+}
+
+section#overview {
+  height: 100%;
+  text-align: center;
+  overflow: initial;
+
+  .logo {
+    clear: both;
+
+    i {
+      background: url('/images/SC_icon_big.png') no-repeat;
+      background-size: $big-logo-size;
+      padding-left: $big-logo-size + ($gutter / 2);
+      height: $big-logo-size;
+      display: inline-block;
+      font-weight: 100;
+      color: $base-text-color;
+      vertical-align: middle;
+    }
+
+    span {
+      font-size: $big-logo-size * 0.625;
+      vertical-align: middle;
+    }
+  }
+
+  .outer-container {
+    position: relative;
+    height: 100%;
+  }
+
+  .screens {
+    i {
+      @include span-columns(8);
+      @include shift(2);
+      background: url('/images/iphones.png') no-repeat center;
+      background-size: contain;
+      width: 8 * $column + 9 * $gutter;
+      height: 0.8 * (8 * $column + 9 * $gutter);
+      display: inline-block;
+      left: 0;
+      margin-top: - (8 * $column + 9 * $gutter) / 2;
+    }
+  }
+
+  p {
+    letter-spacing: 2px;
+    font-size: 2em;
+    line-height: 1.5em;
+    margin: 1.5 * $base-line-height 0;
+  }
+
+  a.appstore {
+    background: url('/images/appstore.png') no-repeat center;
+    margin-right: $gutter;
+  }
+
+  a.googleplay {
+    background: url('/images/googleplay.png') no-repeat center;
+    margin-left: $gutter;
+  }
+
+  a.appstore, a.googleplay {
+    width: 4 * ($column + $gutter);
+    display: inline-block;
+    height: (($column + $gutter) * 4) * 0.33;
+    background-size: contain;
+  }
+
+}
+
+section#highlights {
+
+  .outer-container {
+    padding: em(60) 0;
+    position: relative;
+
+    .screens {
+      position: absolute;
+      left: 50%;
+      height: 100%;
+      top: 0;
+      width: ($column + $gutter) * 8;
+      background: url('/images/screens.png') no-repeat center;
+      background-size: contain;
+    }
+  }
+
+  .highlights {
+    @include span-columns(6);
+    padding: 0;
+    margin: 0;
+
+    h2 {
+      font-size: 3em;
+      margin: 0 0 1em;
+    }
+
+    li {
+      text-shadow: 1px 1px 1px $black;
+
+      &:before {
+        background: url('/images/check_mark.png') no-repeat;
+        height: 18px;
+        width: 24px;
+        left: -46px;
+        top: 1.25em - em(18);
+      }
+    }
+  }
+}
+
+section#details, section#marketing, section#pricing {
+  padding: ($base-line-height * 2) 0;
+
+  h2 {
+    font-size: 3em;
+    // margin: 1em 0 0 0;
+    margin: 0;
+    text-align: center;
+  }
+
+  p {
+    font-weight: 200;
+    font-size: 1.5em;
+    letter-spacing: 1px;
+  }
+
+  h3 {
+    margin: $base-line-height ($column + $gutter) (2 * $base-line-height);
+    font-weight: 200;
+    font-size: 1.25em;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  h4 {
+    color: $pink;
+    font-size: 2em;
+    margin: 0.5em 0 0 0;
+    background-size: 40px;
+    padding-left: 64px;
+    line-height: 40px;
+  }
+
+
+  .content {
+    overflow: hidden;
+
+    > div {
+      @include span-columns(6);
+    }
+  }
+}
+
+section#details {
+
+  .outer-container {
+    .bg {
+      margin-left: 3 * ($column + $gutter);
+      margin-bottom: 3em;
+      height: (6 * $column) * 0.85;
+      background: url('/images/tools_pic.png') no-repeat center;
+      background-size: contain;
+      float: none;
+    }
+
+    .calendar h4 {
+      background: url('/images/calendar_icon.png') no-repeat left center;
+    }
+
+    .feed h4 {
+      background: url('/images/feed_icon.png') no-repeat left center;
+    }
+
+    .scheduler h4 {
+      background: url('/images/scheduler_icon.png') no-repeat left center;
+    }
+
+    .notifications h4 {
+      background: url('/images/notifications_icon.png') no-repeat left center;
+    }
+
+    .client-base h4 {
+      background: url('/images/clients_icon.png') no-repeat left center;
+    }
+
+    .qr-code h4 {
+      background: url('/images/qrcode_icon.png') no-repeat left center;
+    }
+
+    & > div:nth-child(odd) {
+      @include omega;
+    }
+  }
+}
+
+section#marketing {
+  .outer-container {
+
+    .content {
+
+      .sharing h4 {
+        background: url('/images/sharing_icon.png') no-repeat left center;
+      }
+
+      .return h4 {
+        background: url('/images/ROI_icon.png') no-repeat left center;
+      }
+
+      .bg {
+        background: url('/images/fb_coupon.png') no-repeat right center;
+        background-size: contain;
+      }
+    }
+  }
+}
+
+section#pricing {
+  position: relative;
+  overflow: initial;
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 1px;
+    margin-left: - (1.5 * $base-line-height);
+    margin-bottom: - (1.5 * $base-line-height);
+    @include triangle(3 * $base-line-height, $white, down);
+    border-left-width: 2 * $base-line-height;
+    border-right-width: 2 * $base-line-height;
+  }
+
+  h2 {
+    color: $pink;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 2.5em;
+    margin-bottom: $base-line-height;
+  }
+
+  ul {
+    @include span-columns(6);
+    padding-left: 46px;
+
+    li {
+      font-weight: 200;
+      font-size: 1.75em;
+      margin-bottom: 1em;
+
+      &:before {
+        background: url('/images/bullet.png') no-repeat;
+        height: 13px;
+        width: 13px;
+        left: -46px;
+        top: 1.25em - em(13);
+      }
+    }
+  }
+
+  .content .bg {
+    background: url('/images/price_brush_stroke.png') no-repeat center;
+    background-size: contain;
+
+    i {
+      height: 100%;
+      vertical-align: middle;
+      display: inline-block;
+    }
+    #per-month {
+      color: $pink;
+      font-size: 4em;
+      font-weight: bold;
+      text-align: center;
+      vertical-align: middle;
+      display: inline-block;
+      width: 99%;
+
+      b {
+        font-size: 2em;
+        font-weight: 800;
+      }
+    }
+  }
+}
+
+
+section#marketing, section#pricing {
+  .content {
+    position: relative;
+    width: 100%;
+
+    .bg {
+      position: absolute;
+      height: 100%;
+      width: 50%;
+      top: 0;
+      right: 0;
+    }
+  }
+}
+
+section#sign-up {
+  padding: $base-line-height * 4;
+
+  a {
+    @include span-columns(6);
+    @include shift(3);
+    height: 1.5 * $base-line-height;
+    background-color: $pink;
+    color: $white;
+    border-radius: $base-line-height;
+    font-size: 2.5em;
+    line-height: 2em;
+    text-align: center;
+    font-weight: 300;
+    box-shadow: 0 4px 20px -4px transparentize($black, 0.4);
+
+    &:hover {
+      background-color: darken($pink, 5);
+    }
+  }
+}
+
+section#sharing {
+  padding: $base-line-height * 4;
+  text-align: center;
+
+  a {
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+    margin-right: $gutter;
+
+    &:last-child {
+      margin-right: 0;
+    }
+    &.fb {
+      background: url('/images/fb.png') no-repeat center;
+      &:hover {
+        background: url('/images/fb_hover.png') no-repeat center;
+      }
+    }
+    &.twitter {
+      background: url('/images/twitter.png') no-repeat center;
+      &:hover {
+        background: url('/images/twitter_hover.png') no-repeat center;
+      }
+    }
+    &.google-plus {
+      background: url('/images/google.png') no-repeat center;
+      &:hover {
+        background: url('/images/google_hover.png') no-repeat center;
+      }
+    }
+  }
+}
+
+.slider {
+  position: relative;
+  height: em(140);
+
+  .outer-container {
+    position: relative;
+    height: 100%;
+    padding: 0 (2 * em(38));
+
+    .previous, .next {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: em(38);
+      height: 100%;
+      z-index: 10;
+      background-size: contain!important;
+      opacity: 0.7;
+    }
+
+    .previous:hover, .next:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+
+    .previous {
+      left: 0;
+      background: url('/images/parentheses_open.png') no-repeat center;
+      // margin-left: - 2 * em(38);
+    }
+
+    .next {
+      right: 0;
+      background: url('/images/parentheses_close.png') no-repeat center;
+      // margin-right: - 2 * em(38);
+    }
+
+    ul {
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+
+      li {
+        @include transition(all 0.3s $ease-in-cubic);
+        opacity: 0;
+        position: absolute;
+        height: 100%;
+        left: 0;
+
+        &.active {
+          @include transition(all 1s $ease-in-cubic);
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &.at-start {
+    .previous:hover {
+      opacity: 0.7;
+      cursor: pointer;
+    }
+  }
+
+  &.at-end {
+    .next:hover {
+      opacity: 0.7;
+      cursor: pointer;
+    }
+  }
+}
+
+section#reviews {
+  padding: 2 * $base-line-height 0;
+
+  li {
+    display: table;
+
+    & > div {
+      display: table-cell;
+
+      &.photo img {
+        width: em(140);
+        height: em(140);
+      }
+
+      &.review {
+        vertical-align: top;
+        padding-left: $gutter;
+
+        h3 {
+          color: $pink;
+          margin: 0;
+        }
+
+        p {
+          font-size: 1.25em;
+          letter-spacing: 1px;
+        }
+      }
+    }
+  }
+}
+
+b {
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+}
+
+a.button {
+  @include button;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
